@@ -34,9 +34,9 @@ def convert_audio(input_file: str, output_format: str = "wav", output_path: str 
 
 def main():
     print(f"Starting {main.__name__}")
-    input_file = "../../data/audio/mp3/Simone Veil  son discours historique en faveur de lIVG.mp3"
+    input_file = "../../data/audio/wav/Sportif de haut-niveau  la gloire et largent vraiment.wav"
     # Enter the desired output format (e.g., 'mp3', 'wav')
-    convert_audio(input_file, output_format="wav")
+    convert_audio(input_file, output_format="mp3")
     print(f"Ending {main.__name__}")
 
 
