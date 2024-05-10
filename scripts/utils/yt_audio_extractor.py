@@ -3,7 +3,7 @@ from pytube import YouTube
 import time
 
 
-def download_audio_from_youtube_video(video_urls, output_format="wav", output_path="../data/audio/"):
+def download_audio_from_youtube_video(video_urls, output_format="wav", output_path="../../data/audio/"):
     # Ensure video_urls is a list to handle single or multiple URLs uniformly
     if isinstance(video_urls, str):
         video_urls = [video_urls]
@@ -41,7 +41,7 @@ def main():
                        "https://www.youtube.com/watch?v=3D-AXpMRCXY"]
 
     start_time = time.time()
-    download_audio_from_youtube_video(videos_url_list)
+    download_audio_from_youtube_video(videos_url_list, output_format="wav")
     end_time = time.time()
     print(f"Total time taken: {end_time - start_time} seconds")
 
