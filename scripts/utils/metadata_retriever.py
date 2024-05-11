@@ -5,29 +5,32 @@ import wave
 from mutagen.mp3 import MP3
 
 
-def get_metadata(file_path, output_path=None) -> dict:
-    if file_path.endswith(".mp3"):
+def get_metadata(filename, base_path, output_path=None) -> dict:
+    # Construire le chemin complet du fichier
+    file_path = os.path.join(base_path, filename)
+
+    if filename.endswith(".mp3"):
         audio = MP3(file_path)
         metadata = {
-            "File": file_path,
+            "File": filename,
             "Type": "MP3",
             "Duration": audio.info.length,
             "Bytes": os.path.getsize(file_path)
         }
 
-    elif file_path.endswith(".wav"):
+    elif filename.endswith(".wav"):
         with wave.open(file_path, 'rb') as audio:
             duration = audio.getnframes() / float(audio.getframerate())
             size_bytes = audio.getnframes() * audio.getnchannels() * audio.getsampwidth()
             metadata = {
-                "File": file_path,
+                "File": filename,
                 "Type": "WAV",
                 "Duration": duration,
                 "Bytes": size_bytes
             }
     else:
         metadata = {
-            "File": file_path,
+            "File": filename,
             "Error": "Unsupported file format"
         }
 
@@ -35,8 +38,6 @@ def get_metadata(file_path, output_path=None) -> dict:
         with open(output_path, "w") as json_file:
             json.dump(metadata, json_file, indent=4)
         print(f"Metadata saved in {output_path}")
-
-    return metadata
 
 
 def main():
