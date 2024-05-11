@@ -2,9 +2,10 @@ import whisper
 
 from utils import metadata_retriever as mr
 from utils import json_dict_manip as jdm
+from utils import yt_audio_extractor as yae
 
 
-def get_model(model_type="base"):
+def loading_model(model_type="base"):
     print("Available models:")
     print(whisper.available_models())
     print(f"Getting model {model_type}...")
@@ -27,10 +28,15 @@ def main():
 
     model_type = "base"
     language = "fr"
-    model = get_model(model_type)
+    model = loading_model(model_type)
 
-    audio_file_path = "../data/audio/mp3/Simone Veil  son discours historique en faveur de lIVG.mp3"
+    # audio_file_path = "../data/audio/mp3/Simone Veil  son discours historique en faveur de lIVG.mp3"
     # audio_file_path = "../data/audio/wav/Simone Veil  son discours historique en faveur de lIVG.wav"
+    videos_url_list = "https://www.youtube.com/watch?v=5wYyJckGrdc"
+
+    # use yt_audio_extractor to download audio from youtube video
+    yae.download_audio_from_youtube_video(videos_url_list, output_format="wav")
+
 
     # Get metadata
     metadata = {"metadata": mr.get_metadata(audio_file_path)}
