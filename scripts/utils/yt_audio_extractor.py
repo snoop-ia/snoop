@@ -1,9 +1,10 @@
 import os
 from pytube import YouTube
 import time
+from typing import List, Union
 
 
-def download_audio_from_youtube_video(video_urls, output_format="wav", output_path="../../data/audio/") -> str:
+def download_audio_from_youtube_video(video_urls: Union[str, List[str]], output_format="wav", output_path="../../data/audio/") -> List[str]:
     # Ensure video_urls is a list to handle single or multiple URLs uniformly
     if isinstance(video_urls, str):
         video_urls = [video_urls]
