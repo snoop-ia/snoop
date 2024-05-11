@@ -7,6 +7,7 @@ from utils import json_dict_manip as jdm
 def get_model(model_type="base"):
     print("Available models:")
     print(whisper.available_models())
+    print(f"Getting model {model_type}...")
     model = whisper.load_model(model_type)
     return model
 
@@ -28,8 +29,8 @@ def main():
     language = "fr"
     model = get_model(model_type)
 
-    # audio_file_path = "../data/audio/mp3/Simone Veil  son discours historique en faveur de lIVG.mp3"
-    audio_file_path = "../data/audio/wav/Simone Veil  son discours historique en faveur de lIVG.wav"
+    audio_file_path = "../data/audio/mp3/Simone Veil  son discours historique en faveur de lIVG.mp3"
+    # audio_file_path = "../data/audio/wav/Simone Veil  son discours historique en faveur de lIVG.wav"
 
     # Get metadata
     metadata = {"metadata": mr.get_metadata(audio_file_path)}
