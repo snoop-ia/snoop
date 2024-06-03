@@ -3,6 +3,8 @@ import whisper
 import datetime
 import json
 
+from typing import List, Optional
+
 from scripts.utils import file_management as fm
 
 
@@ -54,6 +56,42 @@ def save_transcription(transcription, file_type="txt"):
     fm.save_text(transcription.get('text'), f"../../data/transcriptions/{name}")
 
 
+def speech_recognition(audio_file_path: str,
+                       model_type: str = "base",
+                       save_speech_as: Optional[str] = None,
+                       language: Optional[str] = None) -> dict:
+    """
+    This function performs speech recognition on an audio file using the Whisper model.
+
+    Parameters:
+    audio_file_path (str): The path to the audio file to transcribe.
+    model_type (str, optional): The type of Whisper model to use for transcription. Defaults to "base".
+    save_speech_as (str, optional): The format to save the transcription as. Can be "txt" or "json". Defaults to "txt".
+    language (str, optional): The language of the audio file. If not provided, the Whisper model will attempt to detect the language.
+
+    Returns:
+    dict: A dictionary containing the transcription of the audio file and its metadata.
+
+    Raises:
+    Returns None if the specified model type is not available.
+    """
+    model = get_model(model_type)
+    if model is None:
+        return
+
+    transcription = transcribe(model, audio_file_path, language)
+
+    metadata = fm.get_metadata(audio_file_path)
+
+    transcription = {**metadata, **transcription}
+
+    # Save the transcription
+    if save_speech_as is not None:
+        save_transcription(transcription, save_speech_as)
+
+    return transcription
+
+
 def main():
     print(f"Starting {main.__name__}")
 
@@ -74,7 +112,7 @@ def main():
     transcription = {**metadata, **transcription}
 
     # Save the transcription
-    # save_transcription(transcription, "json")
+    # save_speech(transcription, "json")
 
     print(f"Ending {main.__name__}")
 
