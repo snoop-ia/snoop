@@ -6,7 +6,9 @@ from pydub import AudioSegment
 from mutagen.mp3 import MP3
 
 
-def convert_audio(input_file: str, output_format: str = "wav", output_path: str = None) -> None:
+def convert_audio(input_file: str,
+                  output_format: str = "wav",
+                  output_path: str = None) -> None:
     # If end of file is the same as the output format, return
     if os.path.splitext(input_file)[1][1:] == output_format:
         print(f"Audio is already in {output_format} format")

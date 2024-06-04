@@ -1,6 +1,10 @@
 .idea
+.env
+.venv
 syntaxe.md
 notes.md
+notes.txt
 
 data/audio
 data/transcriptions
+data/chroma

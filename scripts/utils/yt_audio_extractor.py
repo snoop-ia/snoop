@@ -35,10 +35,22 @@ def download_audio_from_youtube_video(video_urls, output_format="wav", output_pa
 
 def main():
     print(f"Starting {main.__name__}")
-    videos_url_list = ["https://www.youtube.com/watch?v=5wYyJckGrdc",
-                       "https://www.youtube.com/watch?v=XO-F8yfYmnE",
-                       "https://www.youtube.com/watch?v=RnT-xQCEb-E",
-                       "https://www.youtube.com/watch?v=3D-AXpMRCXY"]
+    videos_url_list = ["https://www.youtube.com/watch?v=FgzM3zpZ55o",
+                       "https://www.youtube.com/watch?v=E3f2Camj0Is",
+                       "https://www.youtube.com/watch?v=dRIhrn8cc9w",
+                       "https://www.youtube.com/watch?v=j080VBVGkfQ",
+                       "https://www.youtube.com/watch?v=buptHUzDKcE",
+                       "https://www.youtube.com/watch?v=gOV8-bC1_KU",
+                       "https://www.youtube.com/watch?v=V7CY68zH6ps",
+                       "https://www.youtube.com/watch?v=8LEuyYXGQjU",
+                       "https://www.youtube.com/watch?v=E-_ecpD5PkE",
+                       "https://www.youtube.com/watch?v=o_i5F1zGPLs",
+                       "https://www.youtube.com/watch?v=RN8qpSs8ozY",
+                       "https://www.youtube.com/watch?v=jJ7JbQBTChM",
+                       "https://www.youtube.com/watch?v=Hg_uyWezMM0",
+                       "https://www.youtube.com/watch?v=zPU1SRHuAW8",
+                       "https://www.youtube.com/watch?v=vDF1BYWhqL8"
+                       ]
 
     start_time = time.time()
     download_audio_from_youtube_video(videos_url_list, output_format="wav")
